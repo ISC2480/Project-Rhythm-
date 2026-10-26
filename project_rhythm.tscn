@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dp2474l2r1rut"]
+
+[ext_resource type="PackedScene" uid="uid://e4r34luawqcb" path="res://stage.tscn" id="1_78rrb"]
+
+[sub_resource type="Environment" id="Environment_x5sen"]
+background_mode = 1
+background_color = Color(0.4215024, 0.60438484, 1, 1)
+background_energy_multiplier = 0.93
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+
+[node name="ProjectRhythm" type="Node3D" unique_id=289033898]
+
+[node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_78rrb")]
+
+[node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
+transform = Transform3D(0.9998785, -0.009151733, 0.012629636, -0.0009019106, 0.7744737, 0.6326055, -0.015570762, -0.6325398, 0.7743713, 0.18179357, 2.8728948, 0.86240137)
+current = true
+
+[node name="DebugCamera" type="Camera3D" parent="." unique_id=476580146]
+transform = Transform3D(1, 0, 0, 0, 0.052057058, 0.9986441, 0, -0.9986441, 0.052057058, 0.1521163, 10.899846, -7.1346035)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189250295]
+environment = SubResource("Environment_x5sen")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=124798344]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
