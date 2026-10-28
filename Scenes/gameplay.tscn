@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dp2474l2r1rut"]
 
-[ext_resource type="PackedScene" uid="uid://e4r34luawqcb" path="res://stage.tscn" id="1_78rrb"]
+[ext_resource type="PackedScene" uid="uid://e4r34luawqcb" path="res://Scenes/stage.tscn" id="1_78rrb"]
+[ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/judgement_system.gd" id="2_ej4tk"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -26,3 +27,6 @@ environment = SubResource("Environment_x5sen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=124798344]
 transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
+script = ExtResource("2_ej4tk")
