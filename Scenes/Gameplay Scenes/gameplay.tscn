@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dp2474l2r1rut"]
 
-[ext_resource type="PackedScene" uid="uid://e4r34luawqcb" path="res://Scenes/stage.tscn" id="1_78rrb"]
-[ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/judgement_system.gd" id="2_ej4tk"]
+[ext_resource type="PackedScene" uid="uid://e4r34luawqcb" path="res://Scenes/Gameplay Scenes/stage.tscn" id="1_78rrb"]
+[ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay Scripts/judgement_system.gd" id="2_ej4tk"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
