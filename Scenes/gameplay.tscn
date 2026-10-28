@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dp2474l2r1rut"]
 
-[ext_resource type="PackedScene" uid="uid://e4r34luawqcb" path="res://Scenes/Gameplay Scenes/stage.tscn" id="1_78rrb"]
-[ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay Scripts/judgement_system.gd" id="2_ej4tk"]
+[ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
+[ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -13,7 +13,7 @@ reflected_light_source = 2
 
 [node name="ProjectRhythm" type="Node3D" unique_id=289033898]
 
-[node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_78rrb")]
+[node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
 
 [node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
 transform = Transform3D(0.9998785, -0.009151733, 0.012629636, -0.0009019106, 0.7744737, 0.6326055, -0.015570762, -0.6325398, 0.7743713, 0.18179357, 2.8728948, 0.86240137)
