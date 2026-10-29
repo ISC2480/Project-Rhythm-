@@ -16,11 +16,11 @@ reflected_light_source = 2
 [node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
 
 [node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
-transform = Transform3D(0.9998785, -0.009151733, 0.012629636, -0.0009019106, 0.7744737, 0.6326055, -0.015570762, -0.6325398, 0.7743713, 0.18179357, 2.8728948, 0.86240137)
+transform = Transform3D(1.0000001, 0, 0, 0, 0.77494437, 0.63202935, 0, -0.63202924, 0.7749446, 0, 2.873, 0.862)
 current = true
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=476580146]
-transform = Transform3D(1, 0, 0, 0, 0.052057058, 0.9986441, 0, -0.9986441, 0.052057058, 0.1521163, 10.899846, -7.1346035)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.152, 10.9, -8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189250295]
 environment = SubResource("Environment_x5sen")
