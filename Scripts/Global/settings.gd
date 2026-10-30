@@ -111,19 +111,19 @@ func load_settings() -> void:
 	if config.load("user://settings.cfg") != OK: 
 		return
 	
-	masterVolume = config.get_value("volume", "masterVolume", 1.0)
-	musicVolume = config.get_value("volume", "musicVolume", 1.0)
-	effectVolume = config.get_value("volume", "effectVolume", 1.0)
+	masterVolume = config.get_value("volume", "masterVolume", DEFAULT_MASTER_VOLUME)
+	musicVolume = config.get_value("volume", "musicVolume", DEFAULT_MUSIC_VOLUME)
+	effectVolume = config.get_value("volume", "effectVolume", DEFAULT_EFFECT_VOLUME)
 	
-	scrollSpeed = config.get_value("gameplay", "scrollSpeed", 1.0)
-	judgementOffset = config.get_value("gameplay", "judgementOffset", 0.0)
-	displayOffset = config.get_value("gameplay", "displayOffset", 0.0)
-	showJudgementFeedback = config.get_value("gameplay", "showJudgementFeedback", false)
+	scrollSpeed = config.get_value("gameplay", "scrollSpeed", DEFAULT_SCROLL_SPEED)
+	judgementOffset = config.get_value("gameplay", "judgementOffset", DEFAULT_JUDGEMENT_OFFSET)
+	displayOffset = config.get_value("gameplay", "displayOffset", DEFAULT_DISPLAY_OFFSET)
+	showJudgementFeedback = config.get_value("gameplay", "showJudgementFeedback", DEFAULT_SHOW_JUDGEMENT_FEEDBACK)
 	
 	laneKeyBindings = config.get_value("input", "laneKeyBindings", DEFAULT_LANE_KEY_BINDINGS)
 	colorKeyBindings = config.get_value("input", "colorKeyBindings", DEFAULT_COLOR_KEY_BINDINGS) 
 	noteColors = config.get_value("appearance", "noteColors", DEFAULT_NOTE_COLORS) 
-	laneTransparency = config.get_value("appearance", "laneTransparency", 1.0)
+	laneTransparency = config.get_value("appearance", "laneTransparency", DEFAULT_LANE_TRANSPARENCY)
 
 
 
@@ -139,9 +139,12 @@ func reset_gameplay_to_default() -> void:
 	displayOffset = DEFAULT_DISPLAY_OFFSET
 	showJudgementFeedback = DEFAULT_SHOW_JUDGEMENT_FEEDBACK
 
+# Dictionaries in GDScript have the values as references
+# Use .duplicate() to assign by copy rather than by reference
 func reset_keybinds_to_default() -> void:
-	laneKeyBindings = DEFAULT_LANE_KEY_BINDINGS
-	colorKeyBindings = DEFAULT_COLOR_KEY_BINDINGS
+	laneKeyBindings = DEFAULT_LANE_KEY_BINDINGS.duplicate()
+	colorKeyBindings = DEFAULT_COLOR_KEY_BINDINGS.duplicate()
 
-func reset_colors_to_default() -> void:
-	noteColors = DEFAULT_NOTE_COLORS
+func reset_appearance_to_default() -> void:
+	noteColors = DEFAULT_NOTE_COLORS.duplicate()
+	laneTransparency = DEFAULT_LANE_TRANSPARENCY
