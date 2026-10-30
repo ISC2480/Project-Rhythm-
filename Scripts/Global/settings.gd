@@ -8,20 +8,21 @@ enum Lane { LANE_1, LANE_2, LANE_3, LANE_4, LANE_SPECIAL }
 
 
 # ALL OF THESE SETTINGS VARIABLES ARE ASSIGNED TO DEFAULT VALUES, HOWEVER
-# THE load_settings() FUNCTION WILL OVERWRITE ALL DEFAULT VALUES IF APPLICABLE
+# THE load_settings() FUNCTION WILL OVERWRITE ALL DEFAULT VALUES IF THE USER
+# HAS CUSTOM VALUES IN settings.cfg
 
 # Volume Settings (1.0 = 100%)
-var masterVolume = 1.0
-var musicVolume = 1.0
-var effectVolume = 1.0
+var masterVolume = DEFAULT_MASTER_VOLUME
+var musicVolume = DEFAULT_MUSIC_VOLUME
+var effectVolume = DEFAULT_EFFECT_VOLUME
 
 
 # Gameplay Settings
 # Scroll speed = multiplier | Judgement/Display Offset = milliseconds
-var scrollSpeed = 1.0
-var judgementOffset = 0.0
-var displayOffset = 0.0
-var showJudgementFeedback = false
+var scrollSpeed = DEFAULT_SCROLL_SPEED
+var judgementOffset = DEFAULT_JUDGEMENT_OFFSET
+var displayOffset = DEFAULT_DISPLAY_OFFSET
+var showJudgementFeedback = DEFAULT_SHOW_JUDGEMENT_FEEDBACK
 
 
 # Cosmetic/Input Settings
