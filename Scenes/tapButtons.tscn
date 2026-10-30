@@ -1,17 +1,73 @@
 [gd_scene format=3 uid="uid://cgqij81q33yig"]
 
+[ext_resource type="Script" uid="uid://cfohqqenwnwnr" path="res://Scripts/Gameplay/D_tap_Anim_Control.gd" id="1_4nlvb"]
 [ext_resource type="PackedScene" uid="uid://do4myttmc2jyr" path="res://Models/Project_Rhythm_Button.glb" id="1_puhug"]
 
-[node name="TapButtons" type="Node3D" unique_id=1982222464]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5dfx"]
+albedo_color = Color(0.32941177, 0.64705884, 0.77254903, 1)
 
-[node name="Project_Rhythm_Button" parent="." unique_id=2092954963 instance=ExtResource("1_puhug")]
-transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -2, 0, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4lji"]
+albedo_color = Color(1, 0.14117648, 0, 1)
+
+[sub_resource type="Animation" id="Animation_puhug"]
+resource_name = "Button1Press"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Project_Rhythm_Button1/world/03_Button_Face:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.05), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4nlvb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Project_Rhythm_Button1/world/03_Button_Face:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nlvb"]
+_data = {
+&"Button1Press": SubResource("Animation_puhug"),
+&"RESET": SubResource("Animation_4nlvb")
+}
+
+[node name="TapButtons" type="Node3D" unique_id=1982222464]
+script = ExtResource("1_4nlvb")
+
+[node name="Project_Rhythm_Button1" parent="." unique_id=2092954963 instance=ExtResource("1_puhug")]
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -2.4, 0, 0)
+
+[node name="02_Raised_Bezel" parent="Project_Rhythm_Button1/world" parent_id_path=PackedInt32Array(2092954963, 277347) index="1" unique_id=1628883609]
+surface_material_override/0 = SubResource("StandardMaterial3D_u5dfx")
+
+[node name="03_Button_Face" parent="Project_Rhythm_Button1/world" parent_id_path=PackedInt32Array(2092954963, 277347) index="2" unique_id=263292480]
+surface_material_override/0 = SubResource("StandardMaterial3D_e4lji")
 
 [node name="Project_Rhythm_Button3" parent="." unique_id=1783362466 instance=ExtResource("1_puhug")]
 transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 1.2, 0, 0)
 
 [node name="Project_Rhythm_Button2" parent="." unique_id=1099369085 instance=ExtResource("1_puhug")]
-transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -0.4, 0, 0)
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -0.6, 0, 0)
 
 [node name="Project_Rhythm_Button4" parent="." unique_id=1259860180 instance=ExtResource("1_puhug")]
-transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 2.8, 0, 0)
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 3, 0, 0)
+
+[node name="Button1PressAnim" type="AnimationPlayer" parent="." unique_id=1178671227]
+libraries/ = SubResource("AnimationLibrary_4nlvb")
+
+[editable path="Project_Rhythm_Button1"]

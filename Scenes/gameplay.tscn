@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
+[ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -12,16 +13,22 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
 
+[sub_resource type="BoxMesh" id="BoxMesh_yxi61"]
+size = Vector3(0.03, 0.001, 14.435038)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lemc"]
+albedo_color = Color(0, 0.039215688, 1, 1)
+
 [node name="ProjectRhythm" type="Node3D" unique_id=289033898]
 
 [node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
 
 [node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.77494437, 0.63202935, 0, -0.63202924, 0.7749446, 0, 2.873, 0.862)
+transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
 current = true
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=476580146]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.152, 10.9, -8)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, -7.8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189250295]
 environment = SubResource("Environment_x5sen")
@@ -34,4 +41,38 @@ light_energy = 0.5
 script = ExtResource("2_ej4tk")
 
 [node name="TapButtons" parent="." unique_id=1982222464 instance=ExtResource("3_m34ki")]
-transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.22, 0.1, 0)
+transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
+
+[node name="LaneLines" type="Node3D" parent="." unique_id=460057833]
+
+[node name="Divider1" type="MeshInstance3D" parent="LaneLines" unique_id=1663006466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.033, -7.861)
+mesh = SubResource("BoxMesh_yxi61")
+surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
+
+[node name="Divider2" type="MeshInstance3D" parent="LaneLines" unique_id=1264928827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033, -7.861)
+mesh = SubResource("BoxMesh_yxi61")
+surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
+
+[node name="Divider3" type="MeshInstance3D" parent="LaneLines" unique_id=598904384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.033, -7.861)
+mesh = SubResource("BoxMesh_yxi61")
+surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
+
+[node name="NoteSpawner" type="Node3D" parent="." unique_id=2030123324]
+
+[node name="Spawn1" type="Marker3D" parent="NoteSpawner" unique_id=790484040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5076022, 0, -16)
+
+[node name="Spawn2" type="Marker3D" parent="NoteSpawner" unique_id=502004793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -16)
+
+[node name="Spawn3" type="Marker3D" parent="NoteSpawner" unique_id=594838184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -16)
+
+[node name="Spawn4" type="Marker3D" parent="NoteSpawner" unique_id=2112720692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
+
+[node name="TapNote" parent="." unique_id=1030779575 instance=ExtResource("4_kwrm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
