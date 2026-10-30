@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dp2474l2r1rut"]
 
+[ext_resource type="Script" uid="uid://hicird7m70db" path="res://Scenes/project_rhythm.gd" id="1_r8bcl"]
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
@@ -20,6 +21,7 @@ size = Vector3(0.03, 0.001, 14.435038)
 albedo_color = Color(0, 0.039215688, 1, 1)
 
 [node name="ProjectRhythm" type="Node3D" unique_id=289033898]
+script = ExtResource("1_r8bcl")
 
 [node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
 
@@ -76,3 +78,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 
 [node name="TapNote" parent="." unique_id=1030779575 instance=ExtResource("4_kwrm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
+
+[node name="Timer" type="Timer" parent="." unique_id=1100380240]
