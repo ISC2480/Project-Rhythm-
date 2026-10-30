@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cgqij81q33yig"]
+
+[ext_resource type="PackedScene" uid="uid://do4myttmc2jyr" path="res://Models/Project_Rhythm_Button.glb" id="1_puhug"]
+
+[node name="TapButtons" type="Node3D" unique_id=1982222464]
+
+[node name="Project_Rhythm_Button" parent="." unique_id=2092954963 instance=ExtResource("1_puhug")]
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -2, 0, 0)
+
+[node name="Project_Rhythm_Button3" parent="." unique_id=1783362466 instance=ExtResource("1_puhug")]
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 1.2, 0, 0)
+
+[node name="Project_Rhythm_Button2" parent="." unique_id=1099369085 instance=ExtResource("1_puhug")]
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -0.4, 0, 0)
+
+[node name="Project_Rhythm_Button4" parent="." unique_id=1259860180 instance=ExtResource("1_puhug")]
+transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 2.8, 0, 0)
