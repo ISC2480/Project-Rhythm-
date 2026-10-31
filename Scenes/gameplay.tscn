@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
+[ext_resource type="Script" uid="uid://ckmls7kkse30n" path="res://Scenes/d_button.gd" id="3_m34ki"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -30,3 +31,15 @@ transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.707
 
 [node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
 script = ExtResource("2_ej4tk")
+
+[node name="Control" type="Control" parent="." unique_id=557059750]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control" unique_id=1629277995]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("3_m34ki")
