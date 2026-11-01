@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
+[ext_resource type="Script" uid="uid://yfakqijuca3h" path="res://Scripts/Gameplay/input_handler.gd" id="5_rlidi"]
+[ext_resource type="Script" uid="uid://bug5uejt270so" path="res://Scenes/node.gd" id="6_1qnfl"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -76,3 +78,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 
 [node name="TapNote" parent="." unique_id=1030779575 instance=ExtResource("4_kwrm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
+
+[node name="Node" type="Node" parent="." unique_id=1931305857]
+script = ExtResource("6_1qnfl")
+
+[node name="rhythmInput" type="Node" parent="Node" unique_id=492944653]
+script = ExtResource("5_rlidi")
