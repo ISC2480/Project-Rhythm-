@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var note_scene: PackedScene = preload("res://note.tscn")
+@export var note_scene: PackedScene = preload("res://Scenes/tapNote.tscn")
 @export_range(0.25, 10.0, 0.25) var note_speed: float = 3.0
 
 const LANE_POSITIONS: Array[float] = [-1.25, -0.20, 0.75, 2.0]
@@ -19,4 +19,9 @@ func spawn_note(lane: int) -> void:
 	mesh_instance.material_override = material
 
 func _on_spawn_timer_timeout() -> void:
+	spawn_note(randi_range(0, 3))
+
+
+func _on_timer_timeout() -> void:
+	print("Timer triggered!")
 	spawn_note(randi_range(0, 3))
