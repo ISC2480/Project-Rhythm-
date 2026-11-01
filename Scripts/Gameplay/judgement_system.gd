@@ -16,7 +16,10 @@ const GOOD_WINDOW = 150.0
 func calculate_note_judgement(note_time: float, input_time: float) -> Judgement:
 	# converting to seconds
 	var offset = Settings.judgementOffset / 1000.0      
-	var time_difference = abs(input_time - note_time - offset) * 1000.0
+	# signed_time_difference is for showJudgementFeedback
+	var signed_time_difference = (input_time - note_time - offset) * 1000.0 
+	var time_difference = abs(signed_time_difference)
+	
 	
 	# return judgement label based on how accurate the user timed the note
 	if time_difference <= PERFECT_WINDOW: return Judgement.PERFECT
