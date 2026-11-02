@@ -22,9 +22,17 @@ func calculate_note_judgement(note_time: float, input_time: float) -> Judgement:
 	
 	
 	# return judgement label based on how accurate the user timed the note
-	if time_difference <= PERFECT_WINDOW: return Judgement.PERFECT
-	elif time_difference <= GREAT_WINDOW: return Judgement.GREAT
-	elif time_difference <= GOOD_WINDOW: return Judgement.GOOD
+	if time_difference <= PERFECT_WINDOW: 
+		print(Judgement.PERFECT)
+		return Judgement.PERFECT
+	elif time_difference <= GREAT_WINDOW:
+		print(Judgement.GREAT) 
+		return Judgement.GREAT
+	elif time_difference <= GOOD_WINDOW: 
+		print(Judgement.GOOD) 
+		return Judgement.GOOD
 	
 	# If the note isn't hit within abs(150 ms), they missed the note
-	return Judgement.MISS
+	else:
+		print(Judgement.MISS)
+		return Judgement.MISS
