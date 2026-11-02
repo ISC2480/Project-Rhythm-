@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
+[ext_resource type="Script" uid="uid://bug5uejt270so" path="res://Scripts/Gameplay/node.gd" id="6_1qnfl"]
+[ext_resource type="Script" uid="uid://yfakqijuca3h" path="res://Scripts/Gameplay/input_handler.gd" id="7_urrcd"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -80,5 +82,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
 
 [node name="Timer" type="Timer" parent="." unique_id=1100380240]
+
+[node name="Node" type="Node" parent="." unique_id=763079937 node_paths=PackedStringArray("controls")]
+script = ExtResource("6_1qnfl")
+controls = NodePath("inputHandler")
+
+[node name="inputHandler" type="Node" parent="Node" unique_id=1587325217]
+script = ExtResource("7_urrcd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
