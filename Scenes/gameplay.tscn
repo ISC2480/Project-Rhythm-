@@ -79,8 +79,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 [node name="TapNote" parent="." unique_id=1030779575 instance=ExtResource("4_kwrm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
 
-[node name="Node" type="Node" parent="." unique_id=1931305857]
+[node name="Node" type="Node" parent="." unique_id=1931305857 node_paths=PackedStringArray("controls")]
 script = ExtResource("6_1qnfl")
+controls = NodePath("rhythmInput")
 
 [node name="rhythmInput" type="Node" parent="Node" unique_id=492944653]
 script = ExtResource("5_rlidi")
