@@ -12,28 +12,28 @@ enum Lane { LANE_1, LANE_2, LANE_3, LANE_4, LANE_SPECIAL }
 # HAS CUSTOM VALUES IN settings.cfg
 
 # Volume Settings (1.0 = 100%)
-var masterVolume = DEFAULT_MASTER_VOLUME
-var musicVolume = DEFAULT_MUSIC_VOLUME
-var effectVolume = DEFAULT_EFFECT_VOLUME
+var master_volume = DEFAULT_MASTER_VOLUME
+var music_volume = DEFAULT_MUSIC_VOLUME
+var effect_volume = DEFAULT_EFFECT_VOLUME
 
 
 # Gameplay Settings
 # Scroll speed = multiplier | Judgement/Display Offset = milliseconds
-var scrollSpeed = DEFAULT_SCROLL_SPEED
-var judgementOffset = DEFAULT_JUDGEMENT_OFFSET
-var displayOffset = DEFAULT_DISPLAY_OFFSET
-var showJudgementFeedback = DEFAULT_SHOW_JUDGEMENT_FEEDBACK
+var scroll_speed = DEFAULT_SCROLL_SPEED
+var judgement_offset = DEFAULT_JUDGEMENT_OFFSET
+var display_offset = DEFAULT_DISPLAY_OFFSET
+var show_judgement_feedback = DEFAULT_SHOW_JUDGEMENT_FEEDBACK
 
 
 # Cosmetic/Input Settings
-var laneKeyBindings = { 
+var lane_key_bindings = { 
 	Lane.LANE_1: KEY_D, 
 	Lane.LANE_2: KEY_F, 
 	Lane.LANE_3: KEY_J, 
 	Lane.LANE_4: KEY_K,
 	Lane.LANE_SPECIAL: KEY_SPACE
 }
-var colorKeyBindings = { NoteColor.COLOR_1: KEY_S, NoteColor.COLOR_2: KEY_L }
+var color_key_bindings = { NoteColor.COLOR_1: KEY_S, NoteColor.COLOR_2: KEY_L }
 # COLOR_3 = Neutral-color | COLOR_SPECIAL = Special note color -> BOTH CAN'T CHANGE
 var noteColors = {
 	NoteColor.COLOR_1: Color(0.9, 0.3, 0.5),
@@ -90,17 +90,17 @@ const DEFAULT_LANE_TRANSPARENCY = 0.0
 func save_settings() -> void:
 	var config = ConfigFile.new()
 	
-	config.set_value("volume", "masterVolume", masterVolume)
-	config.set_value("volume", "musicVolume", musicVolume)
-	config.set_value("volume", "effectVolume", effectVolume)
+	config.set_value("volume", "masterVolume", master_volume)
+	config.set_value("volume", "musicVolume", music_volume)
+	config.set_value("volume", "effectVolume", effect_volume)
 	
-	config.set_value("gameplay", "scrollSpeed", scrollSpeed)
-	config.set_value("gameplay", "judgementOffset", judgementOffset)
-	config.set_value("gameplay", "displayOffset", displayOffset)
-	config.set_value("gameplay", "showJudgementFeedback", showJudgementFeedback)
+	config.set_value("gameplay", "scrollSpeed", scroll_speed)
+	config.set_value("gameplay", "judgementOffset", judgement_offset)
+	config.set_value("gameplay", "displayOffset", display_offset)
+	config.set_value("gameplay", "showJudgementFeedback", show_judgement_feedback)
 	
-	config.set_value("input", "laneKeyBindings", laneKeyBindings)
-	config.set_value("input", "colorKeyBindings", colorKeyBindings)
+	config.set_value("input", "laneKeyBindings", lane_key_bindings)
+	config.set_value("input", "colorKeyBindings", color_key_bindings)
 	config.set_value("appearance", "noteColors", noteColors)
 	config.set_value("appearance", "laneTransparency", laneTransparency)
 	
@@ -112,17 +112,17 @@ func load_settings() -> void:
 	if config.load("user://settings.cfg") != OK: 
 		return
 	
-	masterVolume = config.get_value("volume", "masterVolume", DEFAULT_MASTER_VOLUME)
-	musicVolume = config.get_value("volume", "musicVolume", DEFAULT_MUSIC_VOLUME)
-	effectVolume = config.get_value("volume", "effectVolume", DEFAULT_EFFECT_VOLUME)
+	master_volume = config.get_value("volume", "masterVolume", DEFAULT_MASTER_VOLUME)
+	music_volume = config.get_value("volume", "musicVolume", DEFAULT_MUSIC_VOLUME)
+	effect_volume = config.get_value("volume", "effectVolume", DEFAULT_EFFECT_VOLUME)
 	
-	scrollSpeed = config.get_value("gameplay", "scrollSpeed", DEFAULT_SCROLL_SPEED)
-	judgementOffset = config.get_value("gameplay", "judgementOffset", DEFAULT_JUDGEMENT_OFFSET)
-	displayOffset = config.get_value("gameplay", "displayOffset", DEFAULT_DISPLAY_OFFSET)
-	showJudgementFeedback = config.get_value("gameplay", "showJudgementFeedback", DEFAULT_SHOW_JUDGEMENT_FEEDBACK)
+	scroll_speed = config.get_value("gameplay", "scrollSpeed", DEFAULT_SCROLL_SPEED)
+	judgement_offset = config.get_value("gameplay", "judgementOffset", DEFAULT_JUDGEMENT_OFFSET)
+	display_offset = config.get_value("gameplay", "displayOffset", DEFAULT_DISPLAY_OFFSET)
+	show_judgement_feedback = config.get_value("gameplay", "showJudgementFeedback", DEFAULT_SHOW_JUDGEMENT_FEEDBACK)
 	
-	laneKeyBindings = config.get_value("input", "laneKeyBindings", DEFAULT_LANE_KEY_BINDINGS)
-	colorKeyBindings = config.get_value("input", "colorKeyBindings", DEFAULT_COLOR_KEY_BINDINGS) 
+	lane_key_bindings = config.get_value("input", "laneKeyBindings", DEFAULT_LANE_KEY_BINDINGS)
+	color_key_bindings = config.get_value("input", "colorKeyBindings", DEFAULT_COLOR_KEY_BINDINGS) 
 	noteColors = config.get_value("appearance", "noteColors", DEFAULT_NOTE_COLORS) 
 	laneTransparency = config.get_value("appearance", "laneTransparency", DEFAULT_LANE_TRANSPARENCY)
 
@@ -130,21 +130,21 @@ func load_settings() -> void:
 
 # "Reset to Default Values" functions
 func reset_volume_to_default() -> void:
-	masterVolume = DEFAULT_MASTER_VOLUME
-	musicVolume = DEFAULT_MUSIC_VOLUME
-	effectVolume = DEFAULT_EFFECT_VOLUME
+	master_volume = DEFAULT_MASTER_VOLUME
+	music_volume = DEFAULT_MUSIC_VOLUME
+	effect_volume = DEFAULT_EFFECT_VOLUME
 
 func reset_gameplay_to_default() -> void:
-	scrollSpeed = DEFAULT_SCROLL_SPEED
-	judgementOffset = DEFAULT_JUDGEMENT_OFFSET
-	displayOffset = DEFAULT_DISPLAY_OFFSET
-	showJudgementFeedback = DEFAULT_SHOW_JUDGEMENT_FEEDBACK
+	scroll_speed = DEFAULT_SCROLL_SPEED
+	judgement_offset = DEFAULT_JUDGEMENT_OFFSET
+	display_offset = DEFAULT_DISPLAY_OFFSET
+	show_judgement_feedback = DEFAULT_SHOW_JUDGEMENT_FEEDBACK
 
 # Dictionaries in GDScript have the values as references
 # Use .duplicate() to assign by copy rather than by reference
 func reset_keybinds_to_default() -> void:
-	laneKeyBindings = DEFAULT_LANE_KEY_BINDINGS.duplicate()
-	colorKeyBindings = DEFAULT_COLOR_KEY_BINDINGS.duplicate()
+	lane_key_bindings = DEFAULT_LANE_KEY_BINDINGS.duplicate()
+	color_key_bindings = DEFAULT_COLOR_KEY_BINDINGS.duplicate()
 
 func reset_appearance_to_default() -> void:
 	noteColors = DEFAULT_NOTE_COLORS.duplicate()
