@@ -23,7 +23,7 @@ const LANE_ACTIONS: Array[StringName] = [
 	&"lane4"
 ]
 
-# The player starts in red mode.
+# The player should start in black mode.
 var current_color: NoteColor = NoteColor.RED
 
 

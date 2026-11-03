@@ -4,14 +4,6 @@ extends Node
 
 
 func _ready() -> void:
-	prints("tree")
-	if controls == null:
-		push_error("Assign the controller node to Controls in the Inspector.")
-		return
-
-	if not controls.has_signal("lane_pressed"):
-		push_error("The selected node needs the input_handler.gd controller.")
-		return
 
 	controls.connect("lane_pressed", _on_lane_pressed)
 	controls.connect("lane_released", _on_lane_released)
