@@ -2,9 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
-[ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
-[ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
-[ext_resource type="Script" uid="uid://dpxko80l8qwvj" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
+[ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tap_buttons.tscn" id="3_m34ki"]
+[ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tap_note.tscn" id="4_kwrm5"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -20,68 +19,68 @@ size = Vector3(0.03, 0.001, 14.435038)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lemc"]
 albedo_color = Color(0, 0.039215688, 1, 1)
 
-[node name="ProjectRhythm" type="Node3D" unique_id=289033898]
+[node name="GameplaySession" type="Node3D" unique_id=289033898]
 
-[node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
+[node name="Visuals" type="Node" parent="." unique_id=1015363209]
 
-[node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
+[node name="Stage" parent="Visuals" unique_id=1888664678 instance=ExtResource("1_wbxth")]
+
+[node name="StageCamera" type="Camera3D" parent="Visuals" unique_id=1190383388]
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
 current = true
 
-[node name="DebugCamera" type="Camera3D" parent="." unique_id=476580146]
+[node name="DebugCamera" type="Camera3D" parent="Visuals" unique_id=476580146]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, -7.8)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189250295]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Visuals" unique_id=1189250295]
 environment = SubResource("Environment_x5sen")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=124798344]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Visuals" unique_id=124798344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112906724, 2.5486145, 0.1647929)
 light_energy = 0.5
 
-[node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
-script = ExtResource("2_ej4tk")
-
-[node name="TapButtons" parent="." unique_id=1982222464 instance=ExtResource("3_m34ki")]
+[node name="TapButtons" parent="Visuals" unique_id=1982222464 instance=ExtResource("3_m34ki")]
 transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
 
-[node name="LaneLines" type="Node3D" parent="." unique_id=460057833]
+[node name="LaneLines" type="Node3D" parent="Visuals" unique_id=460057833]
 
-[node name="Divider1" type="MeshInstance3D" parent="LaneLines" unique_id=1663006466]
+[node name="Divider1" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=1663006466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
 
-[node name="Divider2" type="MeshInstance3D" parent="LaneLines" unique_id=1264928827]
+[node name="Divider2" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=1264928827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
 
-[node name="Divider3" type="MeshInstance3D" parent="LaneLines" unique_id=598904384]
+[node name="Divider3" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=598904384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
 
-[node name="NoteSpawner" type="Node3D" parent="." unique_id=2030123324 node_paths=PackedStringArray("stationary_tapnotes")]
-script = ExtResource("4_r8bcl")
-stationary_tapnotes = NodePath("../TapNote")
+[node name="NoteSpawner" type="Node3D" parent="Visuals" unique_id=2030123324]
 
-[node name="Spawn1" type="Marker3D" parent="NoteSpawner" unique_id=790484040]
+[node name="Spawn1" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=790484040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5076022, 0, -16)
 
-[node name="Spawn2" type="Marker3D" parent="NoteSpawner" unique_id=502004793]
+[node name="Spawn2" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=502004793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -16)
 
-[node name="Spawn3" type="Marker3D" parent="NoteSpawner" unique_id=594838184]
+[node name="Spawn3" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=594838184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -16)
 
-[node name="Spawn4" type="Marker3D" parent="NoteSpawner" unique_id=2112720692]
+[node name="Spawn4" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=2112720692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 
-[node name="TapNote" parent="." unique_id=1030779575 instance=ExtResource("4_kwrm5")]
+[node name="TapNote" parent="Visuals" unique_id=1030779575 instance=ExtResource("4_kwrm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
+
+[node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
+script = ExtResource("2_ej4tk")
 
 [node name="Timer" type="Timer" parent="." unique_id=1100380240]
 wait_time = 0.75
 autostart = true
 
-[connection signal="timeout" from="Timer" to="NoteSpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Visuals/NoteSpawner" method="_on_spawn_timer_timeout"]
