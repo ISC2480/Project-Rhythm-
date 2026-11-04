@@ -1,38 +1,59 @@
-
+class_name NoteSpawner
 extends Node3D
 
-@export var note_scene: PackedScene = preload(
-    "res://Scenes/tapNote.tscn"
-)
-
+const TAP_NOTE_SCENE = preload ("res://Scenes/tap_note.tscn")
 @export var note_speed: float = 3.0
-
 @export var stationary_tapnotes: Node3D
 
-
-func spawn_note(lane: int) -> void:
-	if lane < 0 or lane >= 4:
-		return
-
-	if stationary_tapnotes == null:
-		push_warning("Stationary TapNotes not assigned!")
-		return
-
-	# Create a new TapNote scene
-	var note = note_scene.instantiate()
-
-	# Configure it as a moving note
-	note.lane = lane
-	note.note_speed = note_speed
-	note.is_moving = true
-
-	# Add the note to the scene
-	add_child(note)
-
-	# Start at the same origin as the stationary notes
-	note.global_transform = stationary_tapnotes.global_transform
+# Using @onready to include the other child nodes in the scene
+@onready var spawn_markers= {
+	Settings.Lane.LANE_1: $Spawn1,
+	Settings.Lane.LANE_2: $Spawn2,
+	Settings.Lane.LANE_3: $Spawn3,
+	Settings.Lane.LANE_4: $Spawn4 
+}
+@onready var notes_container: Node3D = $"../Notes"
 
 
-func _on_spawn_timer_timeout() -> void:
-	var random_lane = randi_range(0, 3)
-	spawn_note(random_lane)
+func spawn_note(note_data: NoteData) -> Note:
+	var note: Note = TAP_NOTE_SCENE.instantiate() as Note
+	if note == null: return null
+	
+	# Copying next note_data from a song chart to current spawning note
+	note.hit_time = note_data.hit_time
+	note.lane = note_data.lane
+	note.note_color = note_data.note_color
+	
+	# Setting the position of where the note spawns
+	var marker: Marker3D = spawn_markers[note.lane]
+	note.global_position = marker.global_position
+	note.spawn_position = marker.global_position
+	
+	return note
+
+#func spawn_note(lane: int) -> void:
+	#if lane < 0 or lane >= 4:
+		#return
+#
+	#if stationary_tapnotes == null:
+		#push_warning("Stationary TapNotes not assigned!")
+		#return
+#
+	## Create a new TapNote scene
+	#var note = TAP_NOTE_SCENE.instantiate()
+#
+	## Configure it as a moving note
+	#note.lane = lane
+	#note.note_speed = note_speed
+	#note.is_moving = true
+#
+	## Add the note to the scene
+	#add_child(note)
+#
+	## Start at the same origin as the stationary notes
+	#note.global_transform = stationary_tapnotes.global_transform
+
+
+#func _on_spawn_timer_timeout() -> void:
+	#var random_lane = randi_range(0, 3)
+	#spawn_note(random_lane)

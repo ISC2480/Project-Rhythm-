@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://dp2474l2r1rut"]
 
+[ext_resource type="Script" uid="uid://cs8ukty3pom1r" path="res://Scripts/Gameplay/gameplay.gd" id="1_urrcd"]
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tap_buttons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tap_note.tscn" id="4_kwrm5"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/note_spawner.gd" id="4_puebw"]
+[ext_resource type="Script" uid="uid://c8b26j22x7gva" path="res://Scripts/Gameplay/note_manager.gd" id="5_r8bcl"]
+[ext_resource type="Resource" uid="uid://bmcjle2y8lm0r" path="res://Resources/test_chart.tres" id="6_rlidi"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -20,6 +24,7 @@ size = Vector3(0.03, 0.001, 14.435038)
 albedo_color = Color(0, 0.039215688, 1, 1)
 
 [node name="GameplaySession" type="Node3D" unique_id=289033898]
+script = ExtResource("1_urrcd")
 
 [node name="Visuals" type="Node" parent="." unique_id=1015363209]
 
@@ -59,22 +64,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
 
-[node name="NoteSpawner" type="Node3D" parent="Visuals" unique_id=2030123324]
+[node name="NoteSpawner" type="Node3D" parent="." unique_id=2030123324]
+script = ExtResource("4_puebw")
 
-[node name="Spawn1" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=790484040]
+[node name="Spawn1" type="Marker3D" parent="NoteSpawner" unique_id=790484040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5076022, 0, -16)
 
-[node name="Spawn2" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=502004793]
+[node name="Spawn2" type="Marker3D" parent="NoteSpawner" unique_id=502004793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -16)
 
-[node name="Spawn3" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=594838184]
+[node name="Spawn3" type="Marker3D" parent="NoteSpawner" unique_id=594838184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -16)
 
-[node name="Spawn4" type="Marker3D" parent="Visuals/NoteSpawner" unique_id=2112720692]
+[node name="Spawn4" type="Marker3D" parent="NoteSpawner" unique_id=2112720692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 
-[node name="TapNote" parent="Visuals" unique_id=1030779575 instance=ExtResource("4_kwrm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
+[node name="Notes" type="Node3D" parent="." unique_id=959300522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5076022, 0, -16)
+
+[node name="TapNote" parent="Notes" unique_id=1030779575 instance=ExtResource("4_kwrm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5054493, -0.2, 0)
 
 [node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
 script = ExtResource("2_ej4tk")
@@ -83,4 +92,10 @@ script = ExtResource("2_ej4tk")
 wait_time = 0.75
 autostart = true
 
-[connection signal="timeout" from="Timer" to="Visuals/NoteSpawner" method="_on_spawn_timer_timeout"]
+[node name="NoteManager" type="Node3D" parent="." unique_id=983155301]
+script = ExtResource("5_r8bcl")
+selected_chart = ExtResource("6_rlidi")
+
+[node name="JudgementLine" type="Node3D" parent="." unique_id=613508859]
+
+[connection signal="timeout" from="Timer" to="NoteSpawner" method="_on_spawn_timer_timeout"]

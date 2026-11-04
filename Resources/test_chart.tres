@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="SongChart" format=3 uid="uid://bmcjle2y8lm0r"]
+
+[ext_resource type="Script" uid="uid://bxn5fxo3dc4jt" path="res://Scripts/Gameplay/note_data.gd" id="1_cret0"]
+[ext_resource type="Script" uid="uid://dpa5t0mlpyji4" path="res://Scripts/Gameplay/song_chart.gd" id="2_2t58n"]
+
+[sub_resource type="Resource" id="Resource_rx13r"]
+script = ExtResource("1_cret0")
+hit_time = 3.0
+note_color = 2
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
+
+[sub_resource type="Resource" id="Resource_2t58n"]
+script = ExtResource("1_cret0")
+hit_time = 4.0
+note_color = 2
+lane = 1
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
+
+[sub_resource type="Resource" id="Resource_qxqlr"]
+script = ExtResource("1_cret0")
+hit_time = 5.0
+note_color = 2
+lane = 2
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
+
+[sub_resource type="Resource" id="Resource_e6snc"]
+script = ExtResource("1_cret0")
+hit_time = 6.0
+note_color = 2
+lane = 3
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
+
+[resource]
+script = ExtResource("2_2t58n")
+chart_name = "Test"
+difficulty = "Easy"
+notes = Array[ExtResource("1_cret0")]([SubResource("Resource_rx13r"), SubResource("Resource_2t58n"), SubResource("Resource_qxqlr"), SubResource("Resource_e6snc")])
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
