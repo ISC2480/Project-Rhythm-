@@ -22,47 +22,49 @@ size = Vector3(0.03, 0.001, 14.435038)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lemc"]
 albedo_color = Color(0, 0.039215688, 1, 1)
 
-[node name="ProjectRhythm" type="Node3D" unique_id=289033898]
+[node name="GameplaySession" type="Node3D" unique_id=289033898]
 script = ExtResource("1_r8bcl")
 
-[node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
+[node name="Visuals" type="Node" parent="." unique_id=169560574]
 
-[node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
+[node name="Stage" parent="Visuals" unique_id=1888664678 instance=ExtResource("1_wbxth")]
+
+[node name="StageCamera" type="Camera3D" parent="Visuals" unique_id=1190383388]
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
 current = true
 
-[node name="DebugCamera" type="Camera3D" parent="." unique_id=476580146]
+[node name="DebugCamera" type="Camera3D" parent="Visuals" unique_id=476580146]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, -7.8)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1189250295]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Visuals" unique_id=1189250295]
 environment = SubResource("Environment_x5sen")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=124798344]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Visuals" unique_id=124798344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112906724, 2.5486145, 0.1647929)
 light_energy = 0.5
 
-[node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
-script = ExtResource("2_ej4tk")
-
-[node name="TapButtons" parent="." unique_id=1982222464 instance=ExtResource("3_m34ki")]
+[node name="TapButtons" parent="Visuals" unique_id=1982222464 instance=ExtResource("3_m34ki")]
 transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
 
-[node name="LaneLines" type="Node3D" parent="." unique_id=460057833]
+[node name="LaneLines" type="Node3D" parent="Visuals" unique_id=460057833]
 
-[node name="Divider1" type="MeshInstance3D" parent="LaneLines" unique_id=1663006466]
+[node name="Divider1" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=1663006466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
 
-[node name="Divider2" type="MeshInstance3D" parent="LaneLines" unique_id=1264928827]
+[node name="Divider2" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=1264928827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
 
-[node name="Divider3" type="MeshInstance3D" parent="LaneLines" unique_id=598904384]
+[node name="Divider3" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=598904384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.033, -7.861)
 mesh = SubResource("BoxMesh_yxi61")
 surface_material_override/0 = SubResource("StandardMaterial3D_6lemc")
+
+[node name="TapNote" parent="Visuals" unique_id=1030779575 instance=ExtResource("4_kwrm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
 
 [node name="NoteSpawner" type="Node3D" parent="." unique_id=2030123324]
 
@@ -78,16 +80,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -16)
 [node name="Spawn4" type="Marker3D" parent="NoteSpawner" unique_id=2112720692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 
-[node name="TapNote" parent="." unique_id=1030779575 instance=ExtResource("4_kwrm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
+[node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
+script = ExtResource("2_ej4tk")
+
+[node name="Controls" type="Node" parent="." unique_id=763079937 node_paths=PackedStringArray("controls")]
+script = ExtResource("6_1qnfl")
+controls = NodePath("InputHandler")
+
+[node name="InputHandler" type="Node" parent="Controls" unique_id=1587325217]
+script = ExtResource("7_urrcd")
 
 [node name="Timer" type="Timer" parent="." unique_id=1100380240]
 
-[node name="Node" type="Node" parent="." unique_id=763079937 node_paths=PackedStringArray("controls")]
-script = ExtResource("6_1qnfl")
-controls = NodePath("inputHandler")
-
-[node name="inputHandler" type="Node" parent="Node" unique_id=1587325217]
-script = ExtResource("7_urrcd")
+[node name="NoteManager" type="Node3D" parent="." unique_id=1794363755]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

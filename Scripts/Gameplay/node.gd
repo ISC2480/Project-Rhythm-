@@ -29,6 +29,5 @@ func _on_bar_pressed(selected_color: int) -> void:
 func _on_bar_released() -> void:
 	print("Released bar note")
 
-
 func _on_color_changed(selected_color: int) -> void:
 	print("Selected color ID: ", selected_color, " (0 = RED, 1 = BLUE)")
