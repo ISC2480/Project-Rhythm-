@@ -24,6 +24,10 @@ Settings="*uid://bt4r7kmvgxy28"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godotx_health_bar/plugin.cfg")
+
 [input]
 
 lane1={
