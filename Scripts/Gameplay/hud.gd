@@ -16,16 +16,16 @@ func set_health(amount: float) -> void:
 ## This does not require the note judgment system.
 #func _ready() -> void:
 	#set_health(100.0)
-#
+##
 	#await get_tree().create_timer(2.0).timeout
 	#set_health(75.0)
-#
+##
 	#await get_tree().create_timer(2.0).timeout
 	#set_health(50.0)
-#
+##
 	#await get_tree().create_timer(2.0).timeout
 	#set_health(25.0)
-#
+##
 	#await get_tree().create_timer(2.0).timeout
 	#set_health(0.0)
 	#BLOCK HAS BEEN COMMENTED OUT BUT KEPT FOR DEBUG REASONS
