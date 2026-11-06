@@ -9,8 +9,7 @@
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
-background_color = Color(0.4215024, 0.60438484, 1, 1)
-background_energy_multiplier = 0.93
+background_color = Color(0, 0, 0.102304764, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
@@ -24,6 +23,7 @@ albedo_color = Color(0, 0.039215688, 1, 1)
 [node name="ProjectRhythm" type="Node3D" unique_id=289033898]
 
 [node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3841858e-07, 0)
 
 [node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
@@ -36,8 +36,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 environment = SubResource("Environment_x5sen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=124798344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112906724, 2.5486145, 0.1647929)
-light_energy = 0.5
+transform = Transform3D(0.9999644, 0.002786946, -0.007963286, 0.00195954, 0.841336, 0.54050905, 0.008206168, -0.5405054, 0.84130055, -0.112906724, 3.8511453, 2.9631171)
 
 [node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
 script = ExtResource("2_ej4tk")
