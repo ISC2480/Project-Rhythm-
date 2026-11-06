@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
 [ext_resource type="Script" uid="uid://dpxko80l8qwvj" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
+[ext_resource type="PackedScene" uid="uid://3w60irij0sem" path="res://Scenes/hud.tscn" id="6_rlidi"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -83,5 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021529198, -0.2, -16)
 [node name="Timer" type="Timer" parent="." unique_id=1100380240]
 wait_time = 0.75
 autostart = true
+
+[node name="HUD" parent="." unique_id=124541658 instance=ExtResource("6_rlidi")]
 
 [connection signal="timeout" from="Timer" to="NoteSpawner" method="_on_spawn_timer_timeout"]

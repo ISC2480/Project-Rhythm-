@@ -1,26 +1,42 @@
+# Registers a reusable class name so other Godot scripts can reference this health bar.
 class_name GodotxHealthBar2D
+# Draws the health bar as a 2D node.
 extends Node2D
 
+# Signals let other scripts react when a health change begins, progresses, or finishes.
 signal value_change_started(from_value: float, to_value: float)
 signal value_changed(new_value: float)
 signal value_change_finished(final_value: float)
 
+# The target health value and its permitted minimum/maximum.
 var _value: float = 100.0
 var _min_value: float = 0.0
 var _max_value: float = 100.0
+# The value currently drawn; it can differ from the target while animating.
 var _display_value: float = 100.0
+# Holds visual settings such as colors, borders, labels, and animations.
 var _style: GodotxHealthBarStyle
+# A Tween smoothly transitions the displayed health between values.
 var _tween: Tween
+# Dimensions of the bar, measured in pixels.
 var _bar_size: Vector2 = Vector2(80, 14)
+# Caches the filled rectangle so drawing can reuse the calculation.
 var _cached_fill_rect: Rect2
+# Optional label and icon-related state.
 var _label_text: String = ""
 var _icon_instance: Node
+# Optional node that this health bar can follow.
 var _follow_target: Node2D
+# Offset from the target; a negative Y moves the bar upward.
 var _follow_offset: Vector2 = Vector2(0, -16)
+# Controls horizontal centering over the target.
 var _center_on_target: bool = true
+# Whether to compensate for camera zoom.
 var _billboard_scale: bool = false
+# Original scale used when applying zoom compensation.
 var _base_scale: Vector2 = Vector2.ONE
 
+# Inspector setting for appearance; the setter refreshes the bar when changed.
 @export var style: GodotxHealthBarStyle:
 	set(v):
 		if v:
@@ -32,6 +48,7 @@ var _base_scale: Vector2 = Vector2.ONE
 	get:
 		return _style if _style else _get_default_style()
 
+# Inspector setting for size; each dimension is kept at least 4 pixels.
 @export var bar_size: Vector2 = Vector2(80, 14):
 	set(v):
 		_bar_size = Vector2(maxf(4, v.x), maxf(4, v.y))
@@ -40,12 +57,14 @@ var _base_scale: Vector2 = Vector2.ONE
 	get:
 		return _bar_size
 
+# Inspector-facing health value; changes are passed to set_value().
 @export var value: float = 100.0:
 	set(v):
 		set_value(v, true)
 	get:
 		return _value
 
+# Minimum accepted input health value.
 @export var min_value: float = 0.0:
 	set(v):
 		_min_value = v
@@ -53,6 +72,7 @@ var _base_scale: Vector2 = Vector2.ONE
 	get:
 		return _min_value
 
+# Maximum accepted input health value.
 @export var max_value: float = 100.0:
 	set(v):
 		_max_value = v
@@ -60,40 +80,47 @@ var _base_scale: Vector2 = Vector2.ONE
 	get:
 		return _max_value
 
+# Choose a Node2D that the bar should track.
 @export var follow_target: Node2D:
 	set(v):
 		_follow_target = v
 	get:
 		return _follow_target
 
+# Adjust the bar position relative to the followed node.
 @export var follow_offset: Vector2 = Vector2(0, -24):
 	set(v):
 		_follow_offset = v
 	get:
 		return _follow_offset
 
+# Toggle centering of the bar above the followed node.
 @export var center_on_target: bool = true:
 	set(v):
 		_center_on_target = v
 	get:
 		return _center_on_target
 
+# Toggle camera zoom compensation.
 @export var billboard_scale: bool = false:
 	set(v):
 		_billboard_scale = v
 	get:
 		return _billboard_scale
 
+# Returns the current style, creating a default style if necessary.
 func _get_default_style() -> GodotxHealthBarStyle:
 	if _style != null:
 		return _style
 	_style = GodotxHealthBarStyle.new()
 	return _style
 
+# Runs when the object is constructed; ensures a style resource exists.
 func _init() -> void:
 	if _style == null:
 		_style = GodotxHealthBarStyle.new()
 
+# Runs after entering the scene tree; validates style thresholds and draws initially.
 func _ready() -> void:
 	if not style:
 		_style = GodotxHealthBarStyle.new()
@@ -102,6 +129,7 @@ func _ready() -> void:
 	_queue_update_fill_rect()
 	queue_redraw()
 
+# Runs every frame; updates position and optional zoom-based scale.
 func _process(_delta: float) -> void:
 	if is_instance_valid(_follow_target):
 		var target_pos = _follow_target.global_position
@@ -118,9 +146,11 @@ func _process(_delta: float) -> void:
 		else:
 			scale = _base_scale
 
+# Refreshes the cached geometry for the filled part of the bar.
 func _queue_update_fill_rect() -> void:
 	_cached_fill_rect = _compute_fill_rect()
 
+# Computes the visible filled area based on border, inset, size, and displayed health.
 func _compute_fill_rect() -> Rect2:
 	var st = style
 	var border = st.border_thickness if st.border_enabled else 0
@@ -134,6 +164,7 @@ func _compute_fill_rect() -> Rect2:
 	var t = clampf(_display_value / 100.0, 0.0, 1.0)
 	return Rect2(Vector2(border + inset.x, border + inset.y), Vector2(inner_size.x * t, inner_size.y))
 
+# Converts input health into a 0–100 percentage and animates if enabled.
 func set_value(v: float, animate: bool = true) -> void:
 	var range_ok = max_value - min_value
 	if range_ok <= 0:
@@ -164,18 +195,22 @@ func set_value(v: float, animate: bool = true) -> void:
 		value_changed.emit(_value)
 		queue_redraw()
 
+# Updates the visible health, refreshes geometry, emits a signal, and redraws.
 func _set_display_value(v: float) -> void:
 	_display_value = clampf(v, 0, 100.0)
 	_queue_update_fill_rect()
 	value_changed.emit(_display_value)
 	queue_redraw()
 
+# Notifies listeners that the health transition is complete.
 func _on_animation_finished() -> void:
 	value_change_finished.emit(_display_value)
 
+# Returns the current target health value.
 func get_value() -> float:
 	return _value
 
+# Draws the bar background, border, shadows, fill, gradient, label, and icon.
 func _draw() -> void:
 	var st = style
 	if not st:
@@ -225,6 +260,7 @@ func _draw() -> void:
 	_draw_label_2d(bar_rect, inner_rect)
 	_draw_icon_2d(bar_rect, inner_rect)
 
+# Draws optional text at the position selected in the style settings.
 func _draw_label_2d(bar_rect: Rect2, inner_rect: Rect2) -> void:
 	var st = style
 	if not st.label_enabled:
@@ -264,12 +300,14 @@ func _draw_label_2d(bar_rect: Rect2, inner_rect: Rect2) -> void:
 		font_to_use.draw_string(crid, pos + st.label_shadow_offset, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, st.label_shadow_color)
 	font_to_use.draw_string(crid, pos, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, st.font_color)
 
+# Substitutes the numeric health and maximum into the label template.
 func _format_label(st: GodotxHealthBarStyle) -> String:
 	var v = _display_value
 	var mx = st.label_custom_max
 	var num_val: float = (v / 100.0) * mx if st.label_format.contains("{max}") else v
 	return st.label_format.replace("{value}", str(int(roundf(num_val)))).replace("{max}", str(int(mx)))
 
+# Draws an optional icon or instantiates an icon scene.
 func _draw_icon_2d(bar_rect: Rect2, inner_rect: Rect2) -> void:
 	var st = style
 	if not st.icon_enabled:
