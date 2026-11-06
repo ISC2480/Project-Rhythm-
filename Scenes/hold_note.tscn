@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://q1t2dabonvbv"]
+
+[ext_resource type="PackedScene" uid="uid://dpx8ewcgq4i35" path="res://Models/ProjectRhythm_TapNote.glb" id="1_sccd7"]
+
+[node name="HoldNote" type="Node3D" unique_id=691176283]
+
+[node name="ProjectRhythm_TapNote" parent="." unique_id=313988029 instance=ExtResource("1_sccd7")]
+transform = Transform3D(-2.1855694e-08, -3, -4.371139e-08, 0, -1.3113416e-07, 1, -0.5, 1.3113416e-07, 1.9106855e-15, 0, 0, 0)
