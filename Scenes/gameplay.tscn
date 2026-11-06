@@ -29,6 +29,7 @@ script = ExtResource("1_urrcd")
 [node name="Visuals" type="Node" parent="." unique_id=1015363209]
 
 [node name="Stage" parent="Visuals" unique_id=1888664678 instance=ExtResource("1_wbxth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="StageCamera" type="Camera3D" parent="Visuals" unique_id=1190383388]
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
@@ -48,6 +49,7 @@ light_energy = 0.5
 transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
 
 [node name="LaneLines" type="Node3D" parent="Visuals" unique_id=460057833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Divider1" type="MeshInstance3D" parent="Visuals/LaneLines" unique_id=1663006466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 0.033, -7.861)
@@ -83,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5076022, 0, -16)
 
 [node name="TapNote" parent="Notes" unique_id=1030779575 instance=ExtResource("4_kwrm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5054493, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.505, -0.2, -1)
 
 [node name="JudgementSystem" type="Node" parent="." unique_id=1436275965]
 script = ExtResource("2_ej4tk")
