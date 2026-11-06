@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c3rodvjjmn31i"]
+
+[node name="SongSelection" type="Control" unique_id=1731620434]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="." unique_id=1087867531]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13333334, 0, 0.35686275, 1)
+
+[node name="SongList" type="VBoxContainer" parent="." unique_id=2036893081]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Song1" type="Label" parent="SongList" unique_id=1210851691]
+layout_mode = 2
+
+[node name="Song2" type="Label" parent="SongList" unique_id=2119503209]
+layout_mode = 2
+
+[node name="Song3" type="Label" parent="SongList" unique_id=89427277]
+layout_mode = 2
+
+[node name="Song4" type="Label" parent="SongList" unique_id=523369714]
+layout_mode = 2
