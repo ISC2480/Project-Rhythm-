@@ -181,37 +181,37 @@ script = ExtResource("1_4nlvb")
 [node name="Project_Rhythm_Button1" parent="." unique_id=2092954963 instance=ExtResource("1_puhug")]
 transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -2.4, 0, 0)
 
-[node name="02_Raised_Bezel" parent="Project_Rhythm_Button1/world" parent_id_path=PackedInt32Array(2092954963, 383233368) index="1" unique_id=627068851]
+[node name="02_Raised_Bezel" parent="Project_Rhythm_Button1/world" parent_id_path=PackedInt32Array(2092954963, 277347) index="1" unique_id=1628883609]
 surface_material_override/0 = SubResource("StandardMaterial3D_u5dfx")
 
-[node name="03_Button_Face" parent="Project_Rhythm_Button1/world" parent_id_path=PackedInt32Array(2092954963, 383233368) index="2" unique_id=1090449969]
+[node name="03_Button_Face" parent="Project_Rhythm_Button1/world" parent_id_path=PackedInt32Array(2092954963, 277347) index="2" unique_id=263292480]
 surface_material_override/0 = SubResource("StandardMaterial3D_e4lji")
 
 [node name="Project_Rhythm_Button3" parent="." unique_id=1783362466 instance=ExtResource("1_puhug")]
 transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 1.2, 0, 0)
 
-[node name="02_Raised_Bezel" parent="Project_Rhythm_Button3/world" parent_id_path=PackedInt32Array(1783362466, 383233368) index="1" unique_id=627068851]
+[node name="02_Raised_Bezel" parent="Project_Rhythm_Button3/world" parent_id_path=PackedInt32Array(1783362466, 277347) index="1" unique_id=1628883609]
 surface_material_override/0 = SubResource("StandardMaterial3D_plxqo")
 
-[node name="03_Button_Face" parent="Project_Rhythm_Button3/world" parent_id_path=PackedInt32Array(1783362466, 383233368) index="2" unique_id=1090449969]
+[node name="03_Button_Face" parent="Project_Rhythm_Button3/world" parent_id_path=PackedInt32Array(1783362466, 277347) index="2" unique_id=263292480]
 surface_material_override/0 = SubResource("StandardMaterial3D_xgxar")
 
 [node name="Project_Rhythm_Button2" parent="." unique_id=1099369085 instance=ExtResource("1_puhug")]
 transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, -0.6, 0, 0)
 
-[node name="02_Raised_Bezel" parent="Project_Rhythm_Button2/world" parent_id_path=PackedInt32Array(1099369085, 383233368) index="1" unique_id=627068851]
+[node name="02_Raised_Bezel" parent="Project_Rhythm_Button2/world" parent_id_path=PackedInt32Array(1099369085, 277347) index="1" unique_id=1628883609]
 surface_material_override/0 = SubResource("StandardMaterial3D_84iix")
 
-[node name="03_Button_Face" parent="Project_Rhythm_Button2/world" parent_id_path=PackedInt32Array(1099369085, 383233368) index="2" unique_id=1090449969]
+[node name="03_Button_Face" parent="Project_Rhythm_Button2/world" parent_id_path=PackedInt32Array(1099369085, 277347) index="2" unique_id=263292480]
 surface_material_override/0 = SubResource("StandardMaterial3D_oniry")
 
 [node name="Project_Rhythm_Button4" parent="." unique_id=1259860180 instance=ExtResource("1_puhug")]
 transform = Transform3D(-3.059797e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -0.7, 4.371139e-08, 1.9106855e-15, 3, 0, 0)
 
-[node name="02_Raised_Bezel" parent="Project_Rhythm_Button4/world" parent_id_path=PackedInt32Array(1259860180, 383233368) index="1" unique_id=627068851]
+[node name="02_Raised_Bezel" parent="Project_Rhythm_Button4/world" parent_id_path=PackedInt32Array(1259860180, 277347) index="1" unique_id=1628883609]
 surface_material_override/0 = SubResource("StandardMaterial3D_70rqm")
 
-[node name="03_Button_Face" parent="Project_Rhythm_Button4/world" parent_id_path=PackedInt32Array(1259860180, 383233368) index="2" unique_id=1090449969]
+[node name="03_Button_Face" parent="Project_Rhythm_Button4/world" parent_id_path=PackedInt32Array(1259860180, 277347) index="2" unique_id=263292480]
 surface_material_override/0 = SubResource("StandardMaterial3D_7nmha")
 
 [node name="Button1PressAnim" type="AnimationPlayer" parent="." unique_id=1178671227]

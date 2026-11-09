@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://c3rodvjjmn31i"]
 
+[ext_resource type="Script" uid="uid://kxnwntxqmrl" path="res://Scenes/song_selection.gd" id="1_0b3ay"]
+[ext_resource type="Texture2D" uid="uid://cwtqy76ead6xa" path="res://UI/Song_select_box.png" id="1_1lfv0"]
+[ext_resource type="FontFile" uid="uid://dnx8vokiafew1" path="res://Fonts/Orbitron-VariableFont_wght.ttf" id="2_0b3ay"]
+
 [node name="SongSelection" type="Control" unique_id=1731620434]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0b3ay")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1087867531]
 layout_mode = 1
@@ -19,19 +25,83 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.13333334, 0, 0.35686275, 1)
 
-[node name="SongList" type="VBoxContainer" parent="." unique_id=2036893081]
-layout_mode = 0
+[node name="SongList" type="Control" parent="." unique_id=774852722]
+anchors_preset = 0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 104.0
+
+[node name="SongBox" type="TextureRect" parent="SongList" unique_id=1600549290]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 520.0
+offset_bottom = 220.0
+texture = ExtResource("1_1lfv0")
+expand_mode = 1
+
+[node name="SongBox2" type="TextureRect" parent="SongList" unique_id=770517125]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 280.0
+offset_right = 870.0
+offset_bottom = 420.0
+texture = ExtResource("1_1lfv0")
+expand_mode = 1
+
+[node name="SongBox3" type="TextureRect" parent="SongList" unique_id=1970138270]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 480.0
+offset_right = 1220.0
+offset_bottom = 620.0
+texture = ExtResource("1_1lfv0")
+expand_mode = 1
+
+[node name="SongBox4" type="TextureRect" parent="SongList" unique_id=2067879730]
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 680.0
+offset_right = 1570.0
+offset_bottom = 820.0
+texture = ExtResource("1_1lfv0")
+expand_mode = 1
 
 [node name="Song1" type="Label" parent="SongList" unique_id=1210851691]
-layout_mode = 2
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 159.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("2_0b3ay")
+theme_override_font_sizes/font_size = 75
+text = "SONG 1"
 
 [node name="Song2" type="Label" parent="SongList" unique_id=2119503209]
-layout_mode = 2
+layout_mode = 0
+offset_left = 450.0
+offset_top = 300.0
+offset_right = 509.0
+offset_bottom = 323.0
+theme_override_fonts/font = ExtResource("2_0b3ay")
+theme_override_font_sizes/font_size = 75
+text = "SONG 2"
 
 [node name="Song3" type="Label" parent="SongList" unique_id=89427277]
-layout_mode = 2
+layout_mode = 0
+offset_left = 800.0
+offset_top = 500.0
+offset_right = 1130.0
+offset_bottom = 595.0
+theme_override_fonts/font = ExtResource("2_0b3ay")
+theme_override_font_sizes/font_size = 75
+text = "SONG 3"
 
 [node name="Song4" type="Label" parent="SongList" unique_id=523369714]
-layout_mode = 2
+layout_mode = 0
+offset_left = 1150.0
+offset_top = 700.0
+offset_right = 1209.0
+offset_bottom = 723.0
+theme_override_fonts/font = ExtResource("2_0b3ay")
+theme_override_font_sizes/font_size = 75
+text = "SONG 4"
