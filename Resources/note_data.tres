@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="NoteData" format=3 uid="uid://do1ibdd86mfw5"]
+
+[ext_resource type="Script" uid="uid://bxn5fxo3dc4jt" path="res://Scripts/Gameplay/note_data.gd" id="1_ieuh7"]
+
+[resource]
+script = ExtResource("1_ieuh7")
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
