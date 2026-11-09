@@ -47,6 +47,7 @@ light_energy = 0.5
 
 [node name="TapButtons" parent="Visuals" unique_id=1982222464 instance=ExtResource("3_m34ki")]
 transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
+visible = false
 
 [node name="LaneLines" type="Node3D" parent="Visuals" unique_id=460057833]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

@@ -16,6 +16,8 @@ const TAP_NOTE_SCENE = preload ("res://Scenes/tap_note.tscn")
 
 
 func spawn_note(note_data: NoteData) -> Note:
+	var marker: Marker3D = spawn_markers.get(note_data.lane)
+	
 	var note: Note = TAP_NOTE_SCENE.instantiate() as Note
 	if note == null: return null
 	
@@ -24,10 +26,7 @@ func spawn_note(note_data: NoteData) -> Note:
 	note.lane = note_data.lane
 	note.note_color = note_data.note_color
 	
-	# Setting the position of where the note spawns
-	var marker: Marker3D = spawn_markers[note.lane]
-	note.global_position = marker.global_position
-	note.spawn_position = marker.global_position
+	notes_container
 	
 	return note
 
