@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
-[ext_resource type="Script" uid="uid://hicird7m70db" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
+[ext_resource type="Script" uid="uid://dpxko80l8qwvj" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
 [ext_resource type="PackedScene" uid="uid://3w60irij0sem" path="res://Scenes/hud.tscn" id="6_rlidi"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
