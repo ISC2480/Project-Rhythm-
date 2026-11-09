@@ -4,12 +4,14 @@
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
-[ext_resource type="Script" uid="uid://dpxko80l8qwvj" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
+[ext_resource type="Script" uid="uid://hicird7m70db" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
 [ext_resource type="PackedScene" uid="uid://3w60irij0sem" path="res://Scenes/hud.tscn" id="6_rlidi"]
+[ext_resource type="Script" uid="uid://xf6ilwrv00kp" path="res://Scenes/pause.gd" id="7_1qnfl"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
 background_color = Color(0, 0, 0.102304764, 1)
+background_energy_multiplier = 0.93
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
@@ -85,5 +87,19 @@ wait_time = 0.75
 autostart = true
 
 [node name="HUD" parent="." unique_id=124541658 instance=ExtResource("6_rlidi")]
+
+[node name="Pause" type="CanvasLayer" parent="." unique_id=919121663]
+script = ExtResource("7_1qnfl")
+
+[node name="PausePanel" type="Panel" parent="Pause" unique_id=430471223]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResumeButton" type="Button" parent="Pause/PausePanel" unique_id=1570477861]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=557033769]
 
 [connection signal="timeout" from="Timer" to="NoteSpawner" method="_on_spawn_timer_timeout"]
