@@ -1,9 +1,7 @@
 
 extends Node3D
 
-@export var note_scene: PackedScene = preload(
-    "res://Scenes/tapNote.tscn"
-)
+@export var note_scene: PackedScene = preload("res://Scenes/tapNote.tscn")
 
 @export var note_speed: float = 3.0
 
