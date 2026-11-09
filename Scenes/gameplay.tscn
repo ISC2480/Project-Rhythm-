@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dp2474l2r1rut"]
 
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
+[ext_resource type="PackedScene" uid="uid://yxwo0ew3iyql" path="res://Scenes/pause.tscn" id="2_1qnfl"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tapButtons.tscn" id="3_m34ki"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tapNote.tscn" id="4_kwrm5"]
 [ext_resource type="Script" uid="uid://hicird7m70db" path="res://Scripts/Gameplay/note_spawner.gd" id="4_r8bcl"]
 [ext_resource type="PackedScene" uid="uid://3w60irij0sem" path="res://Scenes/hud.tscn" id="6_rlidi"]
-[ext_resource type="Script" uid="uid://xf6ilwrv00kp" path="res://Scenes/pause.gd" id="7_1qnfl"]
 
 [sub_resource type="Environment" id="Environment_x5sen"]
 background_mode = 1
@@ -22,6 +22,8 @@ size = Vector3(0.03, 0.001, 14.435038)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lemc"]
 albedo_color = Color(0, 0.039215688, 1, 1)
 
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_puebw"]
+
 [node name="ProjectRhythm" type="Node3D" unique_id=289033898]
 
 [node name="Stage" parent="." unique_id=1888664678 instance=ExtResource("1_wbxth")]
@@ -30,6 +32,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3841858e-07, 0)
 [node name="StageCamera" type="Camera3D" parent="." unique_id=1190383388]
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
 current = true
+
+[node name="Pause" parent="StageCamera" unique_id=284933839 instance=ExtResource("2_1qnfl")]
+visible = false
 
 [node name="DebugCamera" type="Camera3D" parent="." unique_id=476580146]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, -7.8)
@@ -88,18 +93,7 @@ autostart = true
 
 [node name="HUD" parent="." unique_id=124541658 instance=ExtResource("6_rlidi")]
 
-[node name="Pause" type="CanvasLayer" parent="." unique_id=919121663]
-script = ExtResource("7_1qnfl")
-
-[node name="PausePanel" type="Panel" parent="Pause" unique_id=430471223]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ResumeButton" type="Button" parent="Pause/PausePanel" unique_id=1570477861]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=557033769]
+stream = SubResource("AudioStreamMP3_puebw")
 
 [connection signal="timeout" from="Timer" to="NoteSpawner" method="_on_spawn_timer_timeout"]
