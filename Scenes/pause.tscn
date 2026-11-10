@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://yxwo0ew3iyql"]
 
-[ext_resource type="Script" uid="uid://44pgy87dygj6" path="res://Scenes/pause.gd" id="1_o80xk"]
+[ext_resource type="Script" uid="uid://44pgy87dygj6" path="res://Scripts/Gameplay/pause.gd" id="1_o80xk"]
+
 
 [sub_resource type="Animation" id="Animation_yurel"]
 resource_name = "PauseAnimation"

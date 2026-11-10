@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3rodvjjmn31i"]
 
-[ext_resource type="Script" uid="uid://kxnwntxqmrl" path="res://Scenes/song_selection.gd" id="1_0b3ay"]
+[ext_resource type="Script" uid="uid://kxnwntxqmrl" path="res://Scripts/Gameplay/song_selection.gd" id="1_0b3ay"]
 [ext_resource type="Texture2D" uid="uid://cwtqy76ead6xa" path="res://UI/Song_select_box.png" id="1_1lfv0"]
 [ext_resource type="FontFile" uid="uid://dnx8vokiafew1" path="res://Fonts/Orbitron-VariableFont_wght.ttf" id="2_0b3ay"]
 
