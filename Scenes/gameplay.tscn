@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ghrdot3ccx0c" path="res://Scenes/stage.tscn" id="1_wbxth"]
 [ext_resource type="Script" uid="uid://s43vaqp5efoe" path="res://Scripts/Gameplay/judgement_system.gd" id="2_ej4tk"]
 [ext_resource type="PackedScene" uid="uid://cgqij81q33yig" path="res://Scenes/tap_buttons.tscn" id="3_m34ki"]
+[ext_resource type="PackedScene" uid="uid://yxwo0ew3iyql" path="res://Scenes/pause.tscn" id="3_puebw"]
 [ext_resource type="PackedScene" uid="uid://b3wes5s7wck15" path="res://Scenes/tap_note.tscn" id="4_kwrm5"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/note_spawner.gd" id="4_puebw"]
 [ext_resource type="Script" uid="uid://c8b26j22x7gva" path="res://Scripts/Gameplay/note_manager.gd" id="5_r8bcl"]
@@ -35,6 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
 current = true
 
+[node name="Pause" parent="Visuals/StageCamera" unique_id=284933839 instance=ExtResource("3_puebw")]
+
 [node name="DebugCamera" type="Camera3D" parent="Visuals" unique_id=476580146]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11, -7.8)
 
@@ -47,7 +50,6 @@ light_energy = 0.5
 
 [node name="TapButtons" parent="Visuals" unique_id=1982222464 instance=ExtResource("3_m34ki")]
 transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
-visible = false
 
 [node name="LaneLines" type="Node3D" parent="Visuals" unique_id=460057833]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
