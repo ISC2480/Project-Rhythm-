@@ -12,27 +12,31 @@ const PERFECT_WINDOW = 50.0
 const GREAT_WINDOW = 100.0
 const GOOD_WINDOW = 150.0
 
-
-func calculate_note_judgement(note_time: float, input_time: float) -> Judgement:
-	# converting to seconds
-	var offset = Settings.judgementOffset / 1000.0      
+func calculate_time_difference(note_time: float, input_time: float) -> float:
+	# converting judgement_offset from milliseconds to seconds
+	var offset = Settings.judgement_offset / 1000.0      
 	# signed_time_difference is for showJudgementFeedback
 	var signed_time_difference = (input_time - note_time - offset) * 1000.0 
+	return abs(signed_time_difference)
+
+
+func calculate_signed_time_difference(note_time: float, input_time: float) -> float:
+	# converting judgement_offset from milliseconds to seconds
+	var offset = Settings.judgement_offset / 1000.0      
+	# signed_time_difference is for showJudgementFeedback
+	return (input_time - note_time - offset) * 1000.0 
+
+
+func calculate_note_judgement(note_time: float, input_time: float) -> Judgement:
+	# converting judgement_offset from milliseconds to seconds
+	var offset = Settings.judgement_offset / 1000.0      
+	# signed_time_difference is for showJudgementFeedback
+	var signed_time_difference = calculate_signed_time_difference(note_time, input_time)
 	var time_difference = abs(signed_time_difference)
 	
-	
 	# return judgement label based on how accurate the user timed the note
-	if time_difference <= PERFECT_WINDOW: 
-		print(Judgement.PERFECT)
-		return Judgement.PERFECT
-	elif time_difference <= GREAT_WINDOW:
-		print(Judgement.GREAT) 
-		return Judgement.GREAT
-	elif time_difference <= GOOD_WINDOW: 
-		print(Judgement.GOOD) 
-		return Judgement.GOOD
-	
+	if time_difference <= PERFECT_WINDOW: return Judgement.PERFECT
+	elif time_difference <= GREAT_WINDOW: return Judgement.GREAT
+	elif time_difference <= GOOD_WINDOW: return Judgement.GOOD
 	# If the note isn't hit within abs(150 ms), they missed the note
-	else:
-		print(Judgement.MISS)
-		return Judgement.MISS
+	else: return Judgement.MISS

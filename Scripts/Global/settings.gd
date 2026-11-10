@@ -5,8 +5,6 @@ enum NoteColor { COLOR_1, COLOR_2, COLOR_3, COLOR_SPECIAL }
 enum Lane { LANE_1, LANE_2, LANE_3, LANE_4, LANE_SPECIAL }
 
 
-
-
 # ALL OF THESE SETTINGS VARIABLES ARE ASSIGNED TO DEFAULT VALUES, HOWEVER
 # THE load_settings() FUNCTION WILL OVERWRITE ALL DEFAULT VALUES IF THE USER
 # HAS CUSTOM VALUES IN settings.cfg
@@ -42,7 +40,6 @@ var noteColors = {
 	NoteColor.COLOR_SPECIAL: Color(1, 0.8, 0.2)
 }
 var laneTransparency = 0.0
-
 
 
 
