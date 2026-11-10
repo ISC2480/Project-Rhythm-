@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://biec55tunxiwf"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_dvb06"]
+
+[sub_resource type="GDScript" id="GDScript_t8u02"]
+script/source = "extends MeshInstance3D
+
+@export var thickness: float = 0.1 # Adjust this to change thickness
+@export var line_color: Color = Color.GREEN
+
+func _ready() -> void:
+	var start = Vector3(-2, 0, -1)
+	var end = Vector3(2, 0, -1)
+	
+	draw_thick_line(start, end)
+
+func draw_thick_line(start: Vector3, end: Vector3) -> void:
+	# 1. Create a Cylinder Mesh
+	var cylinder = CylinderMesh.new()
+	cylinder.top_radius = thickness / 2.0
+	cylinder.bottom_radius = thickness / 2.0
+	cylinder.height = start.distance_to(end)
+	
+	# Apply an unshaded material for that glowing/solid look
+	var mat = ORMMaterial3D.new()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.albedo_color = line_color
+	cylinder.material = mat
+	
+	# Assign the mesh to this node
+	self.mesh = cylinder
+	
+	# 2. Position the cylinder halfway between the two vectors
+	self.global_position = start.lerp(end, 0.5)
+	
+	# 3. Rotate the cylinder to point along the vector path
+	# By default, Godot's CylinderMesh points Up (Y-axis), so we align the Y-axis to our destination vector
+	var direction = (end - start).normalized()
+	if direction != Vector3.UP and direction != Vector3.DOWN:
+		self.look_at(end, Vector3.UP)
+		self.rotate_object_local(Vector3.RIGHT, deg_to_rad(90)) # Adjust orientation to match cylinder alignment
+	else:
+		self.look_at(end, Vector3.FORWARD)
+"
+
+[node name="JudgementLine" type="Node3D" unique_id=316934295]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=214333295]
+mesh = SubResource("ImmediateMesh_dvb06")
+script = SubResource("GDScript_t8u02")
