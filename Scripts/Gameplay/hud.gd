@@ -36,13 +36,13 @@ func apply_judgment_health(judgment: String) -> void:
 			set_health(current_health - 10.0)
 
 		"GOOD":
-			set_health(current_health + 2.0)
+			set_health(current_health + 1.0)
 
 		"GREAT":
-			set_health(current_health + 4.0)
+			set_health(current_health + 2.0)
 
 		"PERFECT":
-			set_health(current_health + 6.0)
+			set_health(current_health + 3.0)
 
 	# Print health for debugging.
 	print("Current Health: ", current_health)
