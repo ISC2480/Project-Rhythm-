@@ -114,7 +114,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112906724, 2.5486145, 0.16
 light_energy = 0.5
 
 [node name="TapButtons" parent="Visuals" unique_id=1982222464 instance=ExtResource("3_m34ki")]
+<<<<<<< Updated upstream
 transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.186, 0.075, -0.5)
+=======
+transform = Transform3D(0.55, 0, 0, 0, 1, 0, 0, 0, 1, -0.18628368, 0.43444332, -0.2727654)
+>>>>>>> Stashed changes
 
 [node name="LaneLines" type="Node3D" parent="Visuals" unique_id=460057833]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

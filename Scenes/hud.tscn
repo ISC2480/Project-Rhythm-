@@ -26,7 +26,6 @@ style = SubResource("Resource_fccik")
 metadata/_custom_type_script = "uid://bxh4ngfdgcy1a"
 
 [node name="JudementContainer" type="Control" parent="." unique_id=1086814423]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 200.0
