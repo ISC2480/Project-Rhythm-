@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://44pgy87dygj6" path="res://Scripts/Gameplay/pause.gd" id="1_o80xk"]
 
-
 [sub_resource type="Animation" id="Animation_yurel"]
 resource_name = "PauseAnimation"
 tracks/0/type = "value"
@@ -126,6 +125,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = -960.0
+offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.5294118)
