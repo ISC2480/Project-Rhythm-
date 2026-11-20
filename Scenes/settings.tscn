@@ -11,9 +11,6 @@ func _ready() -> void:
 func _on_return_pressed() -> void:
 	var pause := get_tree().get_first_node_in_group(\"pause\") as Control
 
-	if pause == null:
-		push_warning(\"The pause menu could not be found.\")
-		return
 
 	hide()
 	pause.show()
