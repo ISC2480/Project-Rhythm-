@@ -1,15 +1,15 @@
 extends Control
-
+@export var settings_scene: PackedScene
 @onready var animation_player = $AnimationPlayer
 var paused = false
-# Called when the node enters the scene tree for the first time.
+var settings: Control
 
-# Start gameplay without showing the pause menu.
 func _ready() -> void:
 	hide()
 	paused = false
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	add_to_group("pause")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		pausemenu()
@@ -24,8 +24,21 @@ func _on_resume_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	pass # Replace with function body.
+	if settings_scene == null:
+		push_warning("Assign your settings scene in the Inspector.")
+		return
+	if not is_instance_valid(settings):
+		settings = settings_scene.instantiate() as Control
+		settings.process_mode = Node.PROCESS_MODE_ALWAYS
+		
+		settings.connect("back_requested", _on_settings_back_requested)
+		get_parent().add_child(settings)
+	hide()
+	settings.show()
 
+func _on_settings_back_requested() -> void:
+	settings.hide()
+	show()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

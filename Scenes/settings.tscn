@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c5ff44oo6onhw"]
+
+[sub_resource type="GDScript" id="GDScript_eyi13"]
+script/source = "extends Control
+
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+func _on_return_pressed() -> void:
+	var pause := get_tree().get_first_node_in_group(\"pause\") as Control
+
+	if pause == null:
+		push_warning(\"The pause menu could not be found.\")
+		return
+
+	hide()
+	pause.show()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_rwkh1"]
+font_size = 64
+
+[node name="Settings" type="Control" unique_id=2090605414]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_eyi13")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1951658115]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.3137255)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1822121556]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -241.0
+offset_right = 241.0
+offset_bottom = 109.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_rwkh1")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1562214761]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20300001
+anchor_top = 0.14
+anchor_right = 0.804
+anchor_bottom = 0.76900005
+offset_left = -0.76000977
+offset_top = -0.19999695
+offset_right = 0.3199463
+offset_bottom = 18.47992
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Return" type="Button" parent="ColorRect/VBoxContainer" unique_id=365091872]
+layout_mode = 2
+text = "Return"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Return" to="." method="_on_return_pressed"]
