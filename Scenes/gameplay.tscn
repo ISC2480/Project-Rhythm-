@@ -97,7 +97,7 @@ script = ExtResource("2_ej4tk")
 [node name="Visuals" type="Node" parent="." unique_id=1015363209]
 
 [node name="Stage" parent="Visuals" unique_id=1888664678 instance=ExtResource("1_wbxth")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13822322, -0.07300115, -0.033584118)
 
 [node name="StageCamera" type="Camera3D" parent="Visuals" unique_id=1190383388]
 transform = Transform3D(1, 0, 0, 0, 0.7749445, 0.6320293, 0, -0.6320293, 0.7749445, 0, 2.8730001, 0.86200047)
