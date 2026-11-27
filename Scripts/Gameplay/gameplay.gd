@@ -21,6 +21,8 @@ var song_time: float = 0.0
 
 func _ready() -> void:
 	input_handler.lane_pressed.connect(_on_lane_pressed)
+	input_handler.lane_released.connect(_on_lane_released)
+	input_handler.bar_pressed.connect(_on_bar_pressed) # Space judges bar notes.
 	note_manager.note_missed.connect(_on_note_missed)
 
 
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 	# Spawn, move, and judge notes normally.
 	note_manager.update_notes(song_time)
 	
-	
+	note_manager.update_holds(song_time)
 # =========================
 # PLAYER INPUT AND JUDGMENT
 # =========================
@@ -75,7 +77,29 @@ func _on_lane_pressed(lane: int) -> void:
 		  " | User Hit Time: ", snappedf(song_time, 0.001)
 	)
 
-	# Remove the note if it was hit.
+	# Hold notes stay alive after their initial successful press.
+	if note is HoldNote:
+		note_manager.start_hold(note as HoldNote)
+	else:
+		note_manager.remove_note(note)
+
+
+# Release an active hold when its lane key is released.
+func _on_lane_released(lane: int) -> void:
+	note_manager.release_hold(lane, song_time)
+
+
+# Judge a bar note with Space using the same accuracy and HUD system.
+func _on_bar_pressed() -> void:
+	var note: Note = note_manager.find_closest_bar_note(song_time)
+	if note == null:
+		return
+	var result = judgement_system.calculate_note_judgement(note.hit_time, song_time)
+	if result == JudgementSystem.Judgement.MISS:
+		return
+	var label: String = JudgementSystem.Judgement.keys()[result]
+	hud.show_judgment(label)
+	hud.apply_judgment_health(label)
 	note_manager.remove_note(note)
 
 

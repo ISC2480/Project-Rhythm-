@@ -1,7 +1,8 @@
 extends Resource
 class_name NoteData
 
-enum NoteType { TAP, HOLD }
+# Bar and Bar2 spans all four lanes and uses Space.
+enum NoteType { TAP, HOLD, BAR, BAR_TWO,} 
 
 @export var hit_time: float
 @export var hold_duration: float

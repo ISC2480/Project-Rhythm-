@@ -1,4 +1,3 @@
-
 class_name NoteManager
 extends Node
 
@@ -12,6 +11,7 @@ const TRAVEL_DISTANCE = 16.0
 
 var next_note_index: int = 0
 var active_notes: Array[Note] = []
+var active_holds: Array[HoldNote] = []
 
 
 # ==================================================
@@ -22,8 +22,9 @@ var active_notes: Array[Note] = []
 # Alternatively, set endless_test_enabled to false.
 # ==================================================
 
-@export var endless_test_enabled: bool = true
+@export var endless_test_enabled: bool = false
 @export var test_note_interval: float = 0.5
+@export_range(0.0, 1.0, 0.05) var test_bar_chance: float = 0.10 # Chance for a debug note to be a bar.
 
 var next_test_hit_time: float = -1.0
 var next_test_lane: int = 0
@@ -84,7 +85,7 @@ func generate_endless_test_notes(song_time: float) -> void:
 
 		# Use a consistent note type and color.
 		note_data.note_color = Settings.NoteColor.COLOR_3
-		note_data.note_type = NoteData.NoteType.TAP
+		note_data.note_type = NoteData.NoteType.BAR if randf() < test_bar_chance else NoteData.NoteType.TAP
 
 		# Add the note to the current chart.
 		current_chart.notes.append(note_data)
@@ -142,6 +143,7 @@ func load_chart(chart: SongChart) -> void:
 		note.queue_free()
 
 	active_notes.clear()
+	active_holds.clear()
 	current_chart = chart
 	next_note_index = 0
 
@@ -182,6 +184,7 @@ func update_notes(song_time: float) -> void:
 		next_note_index += 1
 
 	update_note_positions(song_time)
+	update_holds(song_time)
 	check_missed_notes(song_time)
 
 
@@ -224,9 +227,10 @@ func find_closest_note(lane: int, song_time: float) -> Note:
 	var max_window = JudgementSystem.GOOD_WINDOW / 1000.0
 
 	for note in active_notes:
-
-		if note.judged or note.lane != lane:
-			continue
+# Both bar types must be hit with Space.
+		if note.judged or note.note_type in [
+			NoteData.NoteType.BAR] or note.lane != lane:
+				continue
 
 		var expected_time = note.hit_time + offset
 		var difference = abs(song_time - expected_time)
@@ -240,6 +244,23 @@ func find_closest_note(lane: int, song_time: float) -> Note:
 	return closest_note
 
 
+# Find the closest unjudged bar note within the existing timing window.
+func find_closest_bar_note(song_time: float) -> Note:
+	var closest: Note = null
+	var smallest_difference: float = INF
+	var offset: float = Settings.judgement_offset / 1000.0
+	var max_window: float = JudgementSystem.GOOD_WINDOW / 1000.0
+	for note in active_notes:
+		if note.judged or note.note_type not in [NoteData.NoteType.BAR, 
+		NoteData.NoteType.BAR_TWO]:
+			continue
+		var difference: float = absf(song_time - (note.hit_time + offset))
+		if difference <= max_window and difference < smallest_difference:
+			smallest_difference = difference
+			closest = note
+	return closest
+
+
 # ==================================================
 # REMOVING NOTES AND HANDLING MISSES
 # ==================================================
@@ -248,6 +269,8 @@ func remove_note(note: Note) -> void:
 
 	note.judged = true
 	active_notes.erase(note)
+	if note is HoldNote:
+		active_holds.erase(note as HoldNote)
 	note.queue_free()
 
 
@@ -260,7 +283,70 @@ func check_missed_notes(song_time: float) -> void:
 
 		var expected_time = note.hit_time + offset
 
-		if song_time > expected_time + max_window:
+		if not note.judged and song_time > expected_time + max_window:
 
 			note_missed.emit(note)
 			remove_note(note)
+
+
+# Start a hold without deleting its note head.
+func start_hold(note: HoldNote) -> void:
+	note.judged = true
+	note.is_holding = true
+	if not active_holds.has(note):
+		active_holds.append(note)
+
+# Called from gameplay on key release. Early releases count as misses.
+func release_hold(lane: int, song_time: float) -> void:
+	for hold in active_holds.duplicate():
+		if hold.lane != lane:
+			continue
+		var end_time: float = hold.hit_time + hold.hold_duration
+		if song_time < end_time - 0.05:
+			hold.hold_failed = true
+			note_missed.emit(hold)
+			remove_note(hold)
+		else:
+			complete_hold(hold)
+
+func update_holds(song_time: float) -> void:
+	for hold in active_holds.duplicate():
+		
+		if not is_instance_valid(hold):
+			active_holds.erase(hold)
+			continue
+			
+		# Get the key assigned to the hold note's lane.
+		var key: Key = Settings.lane_key_bindings[hold.lane]
+
+		# Check if the player is still holding the key.
+		var key_held: bool = Input.is_key_pressed(key)
+
+		# Calculate how much of the hold has been completed.
+		var progress: float = clampf(
+			(song_time - hold.hit_time) / maxf(hold.hold_duration, 0.001),
+			0.0,
+			1.0)
+
+		# Shrink the hold note while the correct key is pressed.
+		if key_held:
+			hold.update_hold_visual(progress)
+
+		# Detect if the player releases the key early.
+		if not key_held and song_time < hold.hit_time + hold.hold_duration:
+			hold.hold_failed = true
+			note_missed.emit(hold)
+			remove_note(hold)
+			continue
+		if song_time >= hold.hit_time + hold.hold_duration:
+			if Input.is_key_pressed(key):
+				complete_hold(hold)
+			else:
+				hold.hold_failed = true
+				note_missed.emit(hold)
+				remove_note(hold)
+				
+
+func complete_hold(hold: HoldNote) -> void:
+	hold.hold_finished = true
+	remove_note(hold)

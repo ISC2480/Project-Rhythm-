@@ -1,6 +1,9 @@
 class_name Note
 extends Node3D
 
+# Stores the note type assigned by the chart and NoteSpawner.
+var note_type: NoteData.NoteType = NoteData.NoteType.TAP
+
 var hit_time: float
 var lane: Settings.Lane
 var note_color: Settings.NoteColor

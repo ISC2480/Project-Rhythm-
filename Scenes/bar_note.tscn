@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lsv245w1b8bf"]
+
+[ext_resource type="Script" uid="uid://j3qmu6k0t4xf" path="res://Scripts/Gameplay/bar_note.gd" id="1_rr7tc"]
+
+[sub_resource type="StandardMaterial3D" id="Material_bar"]
+albedo_color = Color(1, 0.72, 0.15, 1)
+emission_enabled = true
+emission = Color(1, 0.52, 0.08, 1)
+emission_energy_multiplier = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_bar"]
+size = Vector3(4, 0.12, 0.5)
+
+[node name="BarNote" type="Node3D" unique_id=1747605091]
+script = ExtResource("1_rr7tc")
+
+[node name="BarMesh" type="MeshInstance3D" parent="." unique_id=1930233520]
+material_override = SubResource("Material_bar")
+mesh = SubResource("BoxMesh_bar")

@@ -30,9 +30,23 @@ note_color = 2
 lane = 3
 metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
 
+[sub_resource type="Resource" id="Resource_32v04"]
+script = ExtResource("1_cret0")
+hit_time = 8.0
+hold_duration = 2.5
+note_type = 1
+lane = 1
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
+
+[sub_resource type="Resource" id="Resource_bho0o"]
+script = ExtResource("1_cret0")
+hit_time = 12.0
+note_type = 2
+metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
+
 [resource]
 script = ExtResource("2_2t58n")
 chart_name = "Test"
 difficulty = "Easy"
-notes = Array[ExtResource("1_cret0")]([SubResource("Resource_rx13r"), SubResource("Resource_2t58n"), SubResource("Resource_qxqlr"), SubResource("Resource_e6snc")])
+notes = Array[ExtResource("1_cret0")]([SubResource("Resource_rx13r"), SubResource("Resource_2t58n"), SubResource("Resource_qxqlr"), SubResource("Resource_e6snc"), SubResource("Resource_32v04"), SubResource("Resource_bho0o")])
 metadata/_custom_type_script = "uid://bxn5fxo3dc4jt"
