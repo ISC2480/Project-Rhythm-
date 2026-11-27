@@ -20,7 +20,6 @@ func _ready() -> void:
 	update_hold_length()
 
 func update_hold_length() -> void:
-	# The imported model is rotated: its LOCAL X axis follows the highway Z axis.
 	# Measure the visible model along highway Z before changing its scale.
 	var original_length: float = _measure_highway_length(tap_model)
 	if original_length <= 0.001:

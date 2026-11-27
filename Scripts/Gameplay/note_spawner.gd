@@ -69,7 +69,6 @@ func spawn_note(note_data: NoteData) -> Note:
 	# Center either bar type across all four lanes.
 	if note_data.note_type in [
 		NoteData.NoteType.BAR,
-		NoteData.NoteType.BAR_TWO
 	]:
 		var left: Vector3 = spawn_markers[
 			Settings.Lane.LANE_1
